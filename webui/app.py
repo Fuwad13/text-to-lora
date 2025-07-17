@@ -183,7 +183,7 @@ def user(user_message: str, history: list):
 
 def build_demo():
     """Build a single interface."""
-    model_dir = "mistralai/Mistral-7B-Instruct-v0.2"
+    model_dir = "google/gemma-2-2b-it"
 
     with gr.Blocks(
         title="Text-to-LoRA", fill_height=True, theme=gr.themes.Ocean()
@@ -287,7 +287,7 @@ def build_demo():
         def initialize():
             device = "cuda:0" if torch.cuda.is_available() else "cpu"
             layer_indices = torch.arange(0, 32, dtype=torch.long, device=device)
-            checkpoint_path = "trained_t2l/t2l_demo/hypermod.pt"
+            checkpoint_path = "trained_t2l/gemma_2b_t2l/hypermod.pt"
             t2l_dir = os.path.dirname(checkpoint_path)
             (
                 args,
